@@ -1,3 +1,4 @@
+//pls try to keep github organized, little messy
 // Jameson Colbert, Data Mgmt, PS3, 24 February 2021
 // Dr. Adam Okulicz-Kozaryn
 
@@ -29,16 +30,22 @@ replace county = "Somerset County" if county == "Somerset"
 replace county = "Sussex County" if county == "Sussex"
 replace county = "Union County" if county == "Union"
 replace county = "Warren County" if county == "Warren"
+
+//have some spaces! like new fucnctional code shoud be set off by space
+
 collapse cases deaths, by(county)
+
+//i dont get it; you subset to NJ, so why is this needed?
 keep if county == "Atlantic County" | county == "Bergen County" | county == "Burlington County" | county == "Camden County" | county == "Cape May County" | county == "Cumberland County" | county == "Essex County" | county == "Gloucester County" | county == "Hudson County" | county == "Hunterdon County" | county == "Mercer County" | county == "Middlesex County" | county == "Monmouth County" | county == "Morris County" | county == "Ocean County" | county == "Passaic County" | county == "Salem County" | county == "Somerset County" | county == "Sussex County" | county == "Union County" | county == "Warren County"
 l
+//ok cool i like it descriptive, but could be shorter
 save NJCovidCasesAndDeathsByCountyB.dta
 
 clear
 insheet using https://raw.githubusercontent.com/jamesonrutgers/DataMng/main/co-est2019-alldata_CLEANED_UP_2.csv //Census data
 keep if stname == "New Jersey"
 l
-save NJCensusPop2019B.dta
+save NJCensusPop2019B.dta //ok cool
 
 clear
 insheet using https://raw.githubusercontent.com/jamesonrutgers/DataMng/main/NJpoverty2019B.csv
@@ -51,7 +58,8 @@ save NJPovertyPerc2019.dta
 clear
 insheet using https://raw.githubusercontent.com/jamesonrutgers/DataMng/main/2020countyhealthuninsuredRWJ.csv
 drop uninsurednumber
-save NJUninsuredPercent.dta
+save NJUninsuredPercent.dta //but then why it doesnt say here what year, be consistent!
+//again should have somehere where the data come from!
 
 clear
 insheet using https://raw.githubusercontent.com/jamesonrutgers/DataMng/main/NJActiveContamSites2020.csv
@@ -81,7 +89,7 @@ drop county
 rename ctyname county
 drop state 
 rename stname state 
-merge 1:m county using NJCovidCasesAndDeathsByCountyB.dta 
+merge 1:m county using NJCovidCasesAndDeathsByCountyB.dta //again as discussed in class should not be 1:m
 drop _merge
 merge m:1 county using NJBelowPov.dta
 drop _merge
@@ -97,5 +105,6 @@ tab county
 desc _merge
 l
 
-drop _merge
+drop _merge 
 reshape wide cases, i(uninsured) j(deaths) //reshape giving me lots of trouble
+//get data meant fro rshape! such as panel data, say counties over time!
