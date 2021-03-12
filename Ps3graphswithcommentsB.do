@@ -189,7 +189,8 @@ merge 1:1 county using NJCovidCasesAndDeathsByCountyB.dta //merge 1
 drop _merge
 merge 1:1 county using NJPoverty2019.dta //merge 2
 drop _merge
-merge 1:m county using NJUninsuredPercent.dta //merge 3
+merge 1:m county using NJUninsuredPercent.dta //merge 3 //are you sure it is 1:m???? and subseuent ones too!
+//pls revisit merge, see documentation and class materials!! its very important you understand it
 drop _merge
 merge m:1 county using NJUnemployment2019 //merge 4
 drop _merge
@@ -228,6 +229,8 @@ replace county = "Union" if county == "Union County"
 replace county = "Warren" if county == "Warren County"
 l
 
+//gret start; have more! again as discussed, more county data and/or over time and/or other states nd/or municipalities etc
+//and definitely more variables--all the stuff that matters for covid, like 10-20 vars
 graph hbar cases deaths, over(county)
 graph hbar belowpov percBelowpov, over(county)
 scatter cases deaths, mlabel(county)
@@ -238,11 +241,12 @@ scatter percBelowpov2 deaths, mlabel (county)
 scatter belowpov2 cases, mlabel (county)
 scatter cases popestimate2019, mlabel (county)
 graph hbar popestimate2019 cases, over(county)
-//consider focusing on regressional modeling
+//consider focusing on regressional modeling //good see that online book i reffered to last class
 
 /* Secondary merges: Merging with Covid Data sans collapse, so as to use 1:m / m:1. Somewhat
 redundant now since my primary merges now contain 1:m/m:1 merges, although
 I'm not sure that's the way it should be. */
+//again, pls study merge and fix it up!
 
 clear
 use NJCensusPop2019B.dta, clear // master
