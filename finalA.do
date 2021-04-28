@@ -1,6 +1,17 @@
 // Jameson Colbert, Data Mgmt, Final, 28 April 2021
 // Dr. Adam Okulicz-Kozaryn
 
+//again great topic
+//yes more data to be added
+//!!take into account eciological fallacy
+//interesting to look at specific cases picked according to some key
+//these scatterplotsare good, but gr combine into one so can see multiple at once
+
+//could also see over time; eg some that had biggerst increase and decease
+
+//do over time by county like:
+// line covid time, over(county)
+
 /* 
 My research into COVID in the Mid-Atlantic primarily looks into the possible
 correlations between COVID cases (and deaths) with race, population, and poverty.
